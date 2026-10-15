@@ -61,7 +61,8 @@ services:
       - ./schema.cql:/scripts/schema.cql:ro
       - ./seed.cql:/scripts/seed.cql:ro
     entrypoint: ["sh", "-c"]
-    command: "cqlsh cassandra1 9042 -f /scripts/schema.cql && cqlsh cassandra1 9042 -f /scripts/seed.cql && echo 'Schema et donnees charges'"
+    command:
+      - "cqlsh cassandra1 9042 -f /scripts/schema.cql && cqlsh cassandra1 9042 -f /scripts/seed.cql && echo 'Schema et donnees charges'"
     restart: "no"
 
 volumes:
